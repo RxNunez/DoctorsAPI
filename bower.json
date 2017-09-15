@@ -6,7 +6,7 @@
     "Ryan Nunez"
   ],
   "license": "ISC",
-  "homepage": "https://github.com/RxNunez/Doctor",
+  "homepage": "https://github.com/RxNunez/DoctorAPI",
   "ignore": [
     "**/.*",
     "node_modules",
