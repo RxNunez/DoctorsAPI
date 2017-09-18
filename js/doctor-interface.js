@@ -31,7 +31,7 @@ for(let pracIndex in prac){
 };
 $(document).ready(function(){
   var applicationModule = new ApplicationModule();
-  $(".doctor").click(function(evt){
+  $("#doctor").click(function(evt){
     evt.preventDefault();
     evt.stopImmediatePropagation();
     evt.stopPropagation();
