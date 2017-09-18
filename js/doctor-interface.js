@@ -1,8 +1,6 @@
-let apiKey = require('./../.env').apiKey;
-
 var ApplicationModule = require('./../js/doctor.js').applicationModule;
-
-var displayData = function(response) {
+let applicationModule = new ApplicationModule();
+let displayData = function(response) {
   // results.forEach(function(result) {
 let index = 0;
 console.log(Array.isArray(response.data));
@@ -26,10 +24,11 @@ for(let pracIndex in prac){
        city = prac[pracIndex].visit_address.city;
        state = prac[pracIndex].visit_address.state;
        zip = prac[pracIndex].visit_address.zip;
-       $('#solutions').append(`<li>Name: ${Name}, ${title}  <br>${street} <br> ${city}, ${state},  <br> ${zip}</li>`);
+       $('#solutions').append(`<li>Name: ${Name}, ${title}  <br> ${street} <br> ${city}, ${state},  <br> ${zip}</li>`);
   index++;
    }
 }
+};
 $(document).ready(function(){
   var applicationModule = new ApplicationModule();
   $(".doctor").click(function(evt){
