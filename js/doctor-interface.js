@@ -3,11 +3,16 @@ let applicationModule = new ApplicationModule();
 let displayData = function(response) {
   // results.forEach(function(result) {
 let index = 0;
-console.log(Array.isArray(response.data));
 let doctorData = response.data;
+console.log(Array.isArray(response.data));
+if(response.length === 0) {
+  return $('#retry').append("No match found. Please Try Again");
+}else{
 for(let index in doctorData){
   console.log(response.data[index].profile);
-  let Name = doctorData[index].profile.name;
+  let name = doctorData[index].profile.name;
+  let firstName = doctorData[index].profile.first_name;
+  let lastName = doctorData[index].profile.last_name;
   let title = doctorData[index].profile.title;
   let street;
   let city;
@@ -18,16 +23,19 @@ for(let index in doctorData){
   let phoneNumber;
   let website;
   let practiceIndex=0;
-  let prac = data[index].practices;
+  let prac = doctorData[index].practices;
 for(let pracIndex in prac){
        street = prac[pracIndex].visit_address.street;
        city = prac[pracIndex].visit_address.city;
        state = prac[pracIndex].visit_address.state;
        zip = prac[pracIndex].visit_address.zip;
-       $('#solutions').append(`<li>Name: ${Name}, ${title}  <br> ${street} <br> ${city}, ${state},  <br> ${zip}</li>`);
+     }
+
+       $('#solutions').append(`<li>Name: ${firstName} ${firstName}, ${title}  <br> ${street} <br> ${city}, ${state},  <br> ${zip} ${website}</li>`);
   index++;
-   }
-}
+
+    }
+  }
 };
 $(document).ready(function(){
   var applicationModule = new ApplicationModule();
@@ -36,9 +44,13 @@ $(document).ready(function(){
     evt.stopImmediatePropagation();
     evt.stopPropagation();
 
-    let inputName = $("#name").val();
+    // let inputName = $("#name").val();
     let inputIssue = $("#issue").val();
-    applicationModule.getData(inputIssue, issueError, displayData);
-    applicationModule.getName(inputName, nameError, displayDocs);
+     $("#issue").val("");
+    //  $("#name").val("");
+     $("#retry").empty();
+    applicationModule.getData(inputIssue, displayData);
+    // applicationModule.getName(inputName, displayData);
+
  });
 });
