@@ -1,5 +1,5 @@
 var ApplicationModule = require('./../js/doctor.js').applicationModule;
-let applicationModule = new ApplicationModule();
+// let applicationModule = new ApplicationModule();
 let displayData = function(response) {
   // results.forEach(function(result) {
 let index = 0;
@@ -10,7 +10,7 @@ if(response.length === 0) {
 }else{
 for(let index in doctorData){
   console.log(response.data[index].profile);
-  let name = doctorData[index].profile.name;
+  // let name = doctorData[index].profile.name;
   let firstName = doctorData[index].profile.first_name;
   let lastName = doctorData[index].profile.last_name;
   let title = doctorData[index].profile.title;
